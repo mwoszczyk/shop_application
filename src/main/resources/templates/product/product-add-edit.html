@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title} + ' product'">Product</title>
+</head>
+<body>
+<p th:text="${paragraph} + ' product'">Product</p>
+<form th:action="@{/product/save}" th:object="${product}" method="post">
+    <p>Product: <input type="text" th:field="*{name}"/></p>
+    <p>Price: <input type="text" th:field="*{price}"/></p>
+    <p>Description: <input type="text" th:field="*{description}"/></p>
+    <p>Category:
+        <select>
+            <option utext="jakasCategoria"
+                    th:each="category : ${fromCategories}"
+                    th:value="category"
+                    th:utext="category.name"/>
+        </select>
+    </p>                                           <!--jak to dziala konkretnie? th: wszystkie czym sa?-->
+</form>
+<p><input type="submit" name="productSaveDecision" value="Save"/> <input type="submit" name="productSaveDecision" value="Cancel"/> <input type="reset" value="Reset"/> </p>
+</body>
+</html>

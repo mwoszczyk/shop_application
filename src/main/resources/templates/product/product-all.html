@@ -12,21 +12,21 @@
     <tr>
         <td>Product</td>
         <td>Price</td>
-        <!--<td>Quantity</td> <-&#45;&#45; potrzebne przy liscie dla klienta-->
+        <td>Category</td>
         <td>Edit</td>
         <td>Remove</td>
     </tr>
     </thead>
     <tbody>
     <tr th:each="product : ${allProducts}">
-        <td th:text="${product.name}">Product name</td>
-        <td th:text="${product.price}">Product price</td>
+        <td th:text="${product.name}">Name</td>
+        <td th:text="${product.price}">Price</td>
+        <td th:text="${product.category.name}">Category</td>                    <!--??-->
         <td><a th:href="@{'/product/edit/' + ${product.id}}">Edit</a> </td>
-        <td><a th:href="@{'/product/delete/' + ${product.id}}">Delete</a> </td>
-        <!--NIESKONCZONE-->
+        <td><a th:href="@{'/product/delete/confirmation/' + ${product.id}}">Delete</a> </td>
     </tr>
     </tbody>
 </table>
-<p><a th:href="@{/product/add}">Add new product</a> </p>
+<p><a th:href="@{/product/add}">Add new product</a> &nbsp; <a th:href="@{/main}">Main Menu</a> </p>
 </body>
 </html>

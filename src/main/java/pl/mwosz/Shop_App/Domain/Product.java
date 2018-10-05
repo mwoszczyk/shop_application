@@ -2,6 +2,7 @@ package pl.mwosz.Shop_App.Domain;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "PRODUCT_DB")
@@ -11,15 +12,22 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String description;
     private BigDecimal price;
+
+    private String description;
+    @OneToOne
+    private Category category;
+    private LocalDateTime productCreationDateTime;
 
     public Product() {
     }
 
-    public Product(String name, BigDecimal price) {
+    public Product(String name, BigDecimal price, String description, Category category) {
         this.name = name;
         this.price = price;
+        this.description = description;
+        this.category = category;
+        this.productCreationDateTime = LocalDateTime.now();
     }
 
     @Override
@@ -28,6 +36,8 @@ public class Product {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", price=" + price +
+                ", description='" + description + '\'' +
+                ", category=" + category +
                 '}';
     }
 
@@ -53,5 +63,29 @@ public class Product {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public LocalDateTime getProductCreationDateTime() {
+        return productCreationDateTime;
+    }
+
+    public void setProductCreationDateTime(LocalDateTime productCreationDateTime) {
+        this.productCreationDateTime = productCreationDateTime;
     }
 }

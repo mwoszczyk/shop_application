@@ -12,9 +12,10 @@ public class Client {
     private Long id;
     private String name;
     private String surname;
+    @OneToOne
     private Address clintAddress;
-    private String login;       // potrzebuje tego ze wzgledu na BD? Baza Danych powinna byc 1 do 1 taka sama jak klasa <strukturalnie>?
-    private String password;
+    @OneToOne
+    private User userId;
 
     public Client() {
     }
@@ -24,12 +25,13 @@ public class Client {
         this.surname = surname;
     }
 
-    public Client(String name, String surname, String login, String password) {
+    public Client(String name, String surname, Address clintAddress, User userId) {
         this.name = name;
         this.surname = surname;
-        this.login = login;
-        this.password = password;
+        this.clintAddress = clintAddress;
+        this.userId = userId;
     }
+
 
     @Override
     public String toString() {
@@ -37,8 +39,8 @@ public class Client {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
+                ", clintAddress=" + clintAddress +
+                ", userId=" + userId +
                 '}';
     }
 
@@ -66,19 +68,19 @@ public class Client {
         this.surname = surname;
     }
 
-    public String getLogin() {
-        return login;
+    public Address getClintAddress() {
+        return clintAddress;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setClintAddress(Address clintAddress) {
+        this.clintAddress = clintAddress;
     }
 
-    public String getPassword() {
-        return password;
+    public User getUserId() {
+        return userId;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserId(User userId) {
+        this.userId = userId;
     }
 }

@@ -6,7 +6,7 @@ import javax.persistence.*;
 // ta klasa powinna byc Entity?? jak o tym myslec, kiedy NAPRAWDE potrzebuje @Entity?
 @Entity
 @Table(name = "Position_DB")
-public class Position {
+public class SingleOrderItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,17 +15,17 @@ public class Position {
     private Product product;
     private int quantity;
 
-    public Position() {
+    public SingleOrderItem() {
     }
 
-    public Position(Product product, int quantity) {
+    public SingleOrderItem(Product product, int quantity) {
         this.product = product;
         this.quantity = quantity;
     }
 
     @Override
     public String toString() {
-        return "Position{" +
+        return "SingleOrderItem{" +
                 "id=" + id +
                 ", product=" + product +
                 ", quantity=" + quantity +

@@ -1,40 +1,51 @@
 package pl.mwosz.Shop_App.Domain;
 
-import com.sun.javafx.collections.MappingChange;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Entity
 @Table(name = "ORDER_DB")
 public class Order {
 
-    //    private Map<Product, Integer> productList;    // mapowanie jest tu potrzebne?
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToMany
-    private List<Position> list = Collections.EMPTY_LIST; // ma to sens??
+    @OneToOne    // ?? to nie jest Entity
+    private ShoppingCart cart;
     @OneToOne
     private Client client;
-    private PaymentMethod paymentMethod;            // mapowanie jest tu potrzebne? ...
     @OneToOne
-    private Address OrderAddress;
-    private Date orderDate;
-    private BigDecimal minimumOrderPrice;
+    private PaymentMethod paymentMethod;
+    @OneToOne
+    private Address orderAddress;
+    private LocalDateTime orderCreationDate;
+    private String clientComment;
 
     public Order() {
     }
 
-    public Order(List<Position> list, Client client, PaymentMethod paymentMethod, Address orderAddress, Date orderDate, BigDecimal minimumOrderPrice) {
-        this.list = list;
+    public Order(ShoppingCart cart, Client client, PaymentMethod paymentMethod, Address orderAddress, String clientComment) {
+        this.cart = cart;
         this.client = client;
         this.paymentMethod = paymentMethod;
-        OrderAddress = orderAddress;
-        this.orderDate = orderDate;
-        this.minimumOrderPrice = minimumOrderPrice;
+        this.orderAddress = orderAddress;
+        this.clientComment = clientComment;
+        this.orderCreationDate = LocalDateTime.now();
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", cart=" + cart +
+                ", client=" + client +
+                ", paymentMethod=" + paymentMethod +
+                ", orderAddress=" + orderAddress +
+                ", orderCreationDate=" + orderCreationDate +
+                ", clientComment='" + clientComment + '\'' +
+                '}';
     }
 
     /*public BigDecimal orderPrice() {
@@ -128,19 +139,6 @@ public class Order {
         sc.close();
     }*/
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", list=" + list +
-                ", client=" + client +
-                ", paymentMethod=" + paymentMethod +
-                ", OrderAddress=" + OrderAddress +
-                ", orderDate=" + orderDate +
-                ", minimumOrderPrice=" + minimumOrderPrice +
-                '}';
-    }
-
     public Long getId() {
         return id;
     }
@@ -149,20 +147,12 @@ public class Order {
         this.id = id;
     }
 
-    /*public Map<Product, Integer> getProductList() {
-        return productList;
+    public ShoppingCart getCart() {
+        return cart;
     }
 
-    public void setProductList(Map<Product, Integer> productList) {
-        this.productList = productList;
-    }*/
-
-    public List<Position> getList() {
-        return list;
-    }
-
-    public void setList(List<Position> list) {
-        this.list = list;
+    public void setCart(ShoppingCart cart) {
+        this.cart = cart;
     }
 
     public Client getClient() {
@@ -182,26 +172,26 @@ public class Order {
     }
 
     public Address getOrderAddress() {
-        return OrderAddress;
+        return orderAddress;
     }
 
     public void setOrderAddress(Address orderAddress) {
-        OrderAddress = orderAddress;
+        this.orderAddress = orderAddress;
     }
 
-    public Date getOrderDate() {
-        return orderDate;
+    public LocalDateTime getOrderCreationDate() {
+        return orderCreationDate;
     }
 
-    public void setOrderDate(Date orderDate) {
-        this.orderDate = orderDate;
+    public void setOrderCreationDate(LocalDateTime orderCreationDate) {
+        this.orderCreationDate = orderCreationDate;
     }
 
-    public BigDecimal getMinimumOrderPrice() {
-        return minimumOrderPrice;
+    public String getClientComment() {
+        return clientComment;
     }
 
-    public void setMinimumOrderPrice(BigDecimal minimumOrderPrice) {
-        this.minimumOrderPrice = minimumOrderPrice;
+    public void setClientComment(String clientComment) {
+        this.clientComment = clientComment;
     }
 }
