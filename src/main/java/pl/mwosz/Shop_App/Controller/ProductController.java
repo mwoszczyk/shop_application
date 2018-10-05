@@ -44,7 +44,7 @@ public class ProductController {
         model.addAttribute("title", "New");
         model.addAttribute("paragraph", "New");
 
-        return "templates/product/product-add-edit.html";
+        return "product/product-add-edit";
     }
 
     @PostMapping("/product/save")

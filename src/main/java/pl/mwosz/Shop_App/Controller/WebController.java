@@ -19,6 +19,6 @@ public class WebController {
     @GetMapping(value = {"/", "/main"})
     public String mainWWW() {
         log.info("connecting to main page from [web controller]....");
-        return "templates/mainWWW.html";        // dlaczego tylko taki zapis mnie przenosi? .html i templates?
+        return "mainWWW";        // dlaczego tylko taki zapis mnie przenosi? .html i templates?
     }
 }
