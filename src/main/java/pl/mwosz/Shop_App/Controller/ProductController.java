@@ -32,7 +32,7 @@ public class ProductController {
 
         model.addAttribute("allProducts", productService.allProducts());
 
-        return "templates/product/product-all.html";    // czemu tylko tak mnie przenosi? .html musi byc
+        return "product/product-all";    // czemu tylko tak mnie przenosi? .html musi byc
     }
 
     @GetMapping("/product/add")
@@ -71,7 +71,7 @@ public class ProductController {
         model.addAttribute("title", "Edit");
         model.addAttribute("paragraph", "Edit");
 
-        return "templates/product/product-add-edit.html";
+        return "product/product-add-edit";
     }
 
     @GetMapping("/product/delete/confirmation/{id}")
