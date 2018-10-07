@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete confirmation</title>
+</head>
+<body>
+<h3>Do you really want to delete this PaymentMethod?</h3>
+<p><a th:href="@{'/paymentMethod/delete/' + ${payMethId}}">Yes</a> &nbsp; <a th:href="@{/paymentMethod/all}">No</a> </p>
+</body>
+</html>

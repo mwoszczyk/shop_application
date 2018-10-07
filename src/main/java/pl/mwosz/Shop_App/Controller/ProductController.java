@@ -32,7 +32,7 @@ public class ProductController {
 
         model.addAttribute("allProducts", productService.allProducts());
 
-        return "product/product-all";    // czemu tylko tak mnie przenosi? .html musi byc
+        return "product/product-all";
     }
 
     @GetMapping("/product/add")
@@ -40,7 +40,7 @@ public class ProductController {
 
         log.info("addProduct() from product controller....");
         model.addAttribute("product", new Product());
-        model.addAttribute("fromCategories", categoryService.allCategories());
+        model.addAttribute("fromCategories", categoryService.allCategories());  // nie powinienm listy "name" przekazywac? wyswietla teraz zawsze "category"
         model.addAttribute("title", "New");
         model.addAttribute("paragraph", "New");
 
@@ -48,18 +48,26 @@ public class ProductController {
     }
 
     @PostMapping("/product/save")
-    public String productSaving(@ModelAttribute Product product, @RequestParam String productSaveDecision){
+    public String productSaving(@ModelAttribute Product product, @RequestParam(name = "productSaveDecision") String pushedButton){
 
         log.info("productSave() from ProductController...");
 
-        switch (productSaveDecision) {
+        if ("Save".equalsIgnoreCase(pushedButton)) {
+            log.info("Confirming save in ProductController....");
+            productService.saveProduct(product);
+
+        }
+
+        return "redirect:/product/all";
+
+        /*switch (productSaveDecision) {
             case "Save":
-                log.info("Conforming save in ProductController....");
+                log.info("Confirming save in ProductController....");
                 productService.saveProduct(product);
                 return "redirect:/product/all";
                 default:
                     return "redirect:/product/all";
-        }
+        }*/
     }
 
     @GetMapping("/product/edit/{id}")
@@ -67,7 +75,7 @@ public class ProductController {
         log.info("productEdit() from ProducrController....");
 
         Optional<Product> productExistanceResult = productService.findProductById(id);
-        productExistanceResult.ifPresent(product -> model.addAttribute("product", product));
+        productExistanceResult.ifPresent(product -> model.addAttribute("product", product));     // skad wie ze chodzi o product??
         model.addAttribute("title", "Edit");
         model.addAttribute("paragraph", "Edit");
 
@@ -81,13 +89,11 @@ public class ProductController {
         return "product/product-delete-confirmation";
     }
 
-    /*@PostMapping("/product/delete")
-    public String deleteProduct(@RequestParam String decision) {
-        log.info("deleteProduct() from ProductController....");
-        switch (decision) {
-            case "Yes":
-                productService.deleteProduct();
-        }
-    }*/
+    @GetMapping("/product/delete/{id}")
+    public String deleteProduct(@PathVariable("id") long id) {
+        log.info(String.format("deleteProduct() from ProductController.... Product ID: [%s]", id));
+        productService.deleteProductById(id);
+        return "redirect:/product/all";
+    }
 
 }

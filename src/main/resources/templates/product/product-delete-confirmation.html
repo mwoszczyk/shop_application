@@ -7,9 +7,8 @@
 </head>
 <body>
 <p><b>Are you sure you want to delete this product?</b></p>
-<form th:action="@{/product/delete}" method="post">
-    <p>Product id: tu chce przekazac ID</p>
-    <input type="submit" name="decision" value="Yes"/> <input type="submit" name="decision" value="No"/>
-</form>
+<p>Product id: tu chce przekazac ID</p>
+<!--<input type="submit" name="decision" value="Yes"/> <input type="submit" name="decision" value="No"/>-->
+<p><a th:href="@{'/product/delete/' + ${productId}}">Yes</a> &nbsp; <a th:href="@{/product/all}">No</a> </p>
 </body>
 </html>

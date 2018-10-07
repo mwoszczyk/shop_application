@@ -16,10 +16,10 @@
             <option utext="jakasCategoria"
                     th:each="category : ${fromCategories}"
                     th:value="category"
-                    th:utext="category.name"/>
+                    th:utext="category"/>   <!--.name-->
         </select>
-    </p>                                           <!--jak to dziala konkretnie? th: wszystkie czym sa?-->
+    </p>
+    <p><input type="submit" name="productSaveDecision" value="Save"/> <input type="submit" name="productSaveDecision" value="Cancel"/> <input type="reset" value="Reset"/><!--jak to dziala konkretnie? th: wszystkie czym sa?-->
 </form>
-<p><input type="submit" name="productSaveDecision" value="Save"/> <input type="submit" name="productSaveDecision" value="Cancel"/> <input type="reset" value="Reset"/> </p>
 </body>
 </html>

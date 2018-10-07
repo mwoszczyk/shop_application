@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title} + ' Payment Method'">Payment Method</title>
+</head>
+<body>
+<p th:text="${paragraph} + ' Payment Method'">Payment Method</p>
+<form th:action="@{/paymentMethod/save}" th:object="${newPayMeth}" method="post">
+    <p>Payment Method: <input type="text" th:field="*{name}"/></p>
+    <p><input type="submit" name="decision" value="Save"/>
+        <input type="submit" name="decision" value="Cancel"/>
+        <input type="reset" value="Reset"/>
+    </p>
+</form>
+</body>
+</html>

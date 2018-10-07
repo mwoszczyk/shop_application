@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Categories</title>
+</head>
+<body>
+<h2>ALL CATEGORIE'S</h2>
+<table>
+    <thead>
+    <tr>
+        <td>Category</td>
+        <td>Creation Data</td>
+        <td>Edit</td>
+        <td>Remove</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="category : ${allCategories}">
+        <td th:text="${category.name}">Category</td>
+        <td th:text="${#temporals.format(category.categoryCreationDateTime, 'dd-MM-yyyy HH:mm')}">Creation data</td>
+        <td><a th:href="@{'/category/edit/' + ${category.id}}">Edit</a> </td>
+        <td><a th:href="@{'/category/delete/choice/' + ${category.id}}">Delete</a> </td>
+    </tr>
+    </tbody>
+</table>
+<p>1. <a th:href="@{/category/add}">Add new category</a> </p>
+<p>2. <a th:href="@{/main}">Main Menu</a> </p>
+</body>
+</html>

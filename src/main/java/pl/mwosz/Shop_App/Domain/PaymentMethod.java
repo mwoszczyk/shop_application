@@ -22,7 +22,7 @@ public class PaymentMethod {
 
     @Override
     public String toString() {
-        return "PaymentMethod{" +
+        return "PaymentMethodService{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

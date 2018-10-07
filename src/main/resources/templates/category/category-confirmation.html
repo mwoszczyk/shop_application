@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete confirmation</title>
+</head>
+<body>
+<h3><b>Are you sure you want to delete this category?</b></h3>
+<p><a th:href="@{'/category/delete/' + ${categoryId}}">Yes</a> &nbsp; <a th:href="@{/category/all}">No</a> </p>
+</body>
+</html>

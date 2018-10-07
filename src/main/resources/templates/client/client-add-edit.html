@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title} + ' client'">Client</title>
+</head>
+<body>
+<p th:text="${paragraph} + ' client'">Client</p>
+<form th:action="@{/client/save}" th:object="${newClient}" method="post">
+    <p>Name: <input type="text" th:field="*{name}"/> </p>
+    <p>Surname: <input type="text" th:field="*{surname}"/> </p>
+    <p>Address ID: <input type="text" th:field="*{clintAddress.id}"/> </p>
+    <p>User ID: <input type="text" th:field="*{userId.id}"/> </p>
+    <p>
+        <input type="submit" name="decision" value="SAVE"/>
+        <input type="submit" name="decision" value="CANCEL"/>
+        <input type="reset" value="RESET"/>
+    </p>
+</form>
+</body>
+</html>

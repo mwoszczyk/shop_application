@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Method's</title>
+</head>
+<body>
+<h2><b>ALL PAYMENT METHOD'S</b></h2>
+<table>
+    <thead>
+    <tr>
+        <td>Payment Method</td>
+        <td>Edit</td>
+        <td>Remove</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="payMeth : ${allPaymentMethods}">
+        <td th:text="${payMeth.name}">Name</td>
+        <td><a th:href="@{'/paymentMethod/edit/' + ${payMeth.id}}">Edit</a> </td>
+        <td><a th:href="@{'/paymentMethod/delete/choice/' + ${payMeth.id}}">Delete</a> </td>
+    </tr>
+    </tbody>
+</table>
+<p><a th:href="@{/paymentMethod/add}">Add new Payment Method</a> </p>
+</body>
+</html>

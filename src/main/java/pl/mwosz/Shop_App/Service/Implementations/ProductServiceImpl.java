@@ -30,13 +30,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void addProduct(Product product, Integer quantity) {
-
-    }
-
-    @Override
-    public void deleteProduct(Product product) {
-        productDao.delete(product);
+    public void deleteProductById(Long id) {
+        log.info(String.format("deleteProductById() from ProoductServiceImpl.... Product ID: [%s]", id));
+        productDao.deleteById(id);
     }
 
     @Override
