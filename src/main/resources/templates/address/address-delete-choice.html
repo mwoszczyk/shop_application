@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Address delete confirmation</title>
+</head>
+<body>
+<h2><b>Do you really want to delete this address?</b></h2>
+<p>
+    <a th:href="@{'/address/delete/' + ${addressId}}">Yes</a>
+    &nbsp;
+    <a th:href="@{/address/all}">No</a>
+</p>
+</body>
+</html>

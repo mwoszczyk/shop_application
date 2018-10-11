@@ -10,8 +10,8 @@
 <form th:action="@{/client/save}" th:object="${newClient}" method="post">
     <p>Name: <input type="text" th:field="*{name}"/> </p>
     <p>Surname: <input type="text" th:field="*{surname}"/> </p>
-    <p>Address ID: <input type="text" th:field="*{clintAddress.id}"/> </p>
-    <p>User ID: <input type="text" th:field="*{userId.id}"/> </p>
+    <!--<p>Address ID: <input type="text" th:field="*{clintAddress}"/> </p>     chcialbym zeby byla taka mozliwosc edycji, w Product wszystko dziala
+    <p>user ID: <input type="text" th:field="*{userId}"/> </p>-->
     <p>
         <input type="submit" name="decision" value="SAVE"/>
         <input type="submit" name="decision" value="CANCEL"/>

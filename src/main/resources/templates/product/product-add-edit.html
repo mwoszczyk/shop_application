@@ -13,7 +13,7 @@
     <p>Description: <input type="text" th:field="*{description}"/></p>
     <p>Category:
         <select>
-            <option utext="jakasCategoria"
+            <option utext="fromCategories"
                     th:each="category : ${fromCategories}"
                     th:value="category"
                     th:utext="category"/>   <!--.name-->

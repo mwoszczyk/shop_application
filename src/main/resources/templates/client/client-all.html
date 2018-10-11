@@ -22,13 +22,15 @@
     <tr th:each="client:${clients}">
         <td th:text="${client.name}">Name</td>
         <td th:text="${client.surname}">Surname</td>
-        <td th:text="${client.clintAddress.id}">Address ID</td>         <!--jak to zrobic??-->
-        <td th:text="${client.userId.id}">User ID</td>
+        <!--<td th:text="${client.clintAddress.id}">Address ID</td>         &lt;!&ndash;jak to zrobic??&ndash;&gt;
+        <td th:text="${client.userId.id}">user ID</td>-->
         <td><a th:href="@{'/client/edit/' + ${client.id}}">Edit</a> </td>
         <td><a th:href="@{'/client/delete/choice/' + ${client.id}}">Delete</a> </td>
     </tr>
     </tbody>
 </table>
-<p><b><a th:href="@{/client/add}">Add new client</a> </b></p>
+<br>
+<p>1. <a th:href="@{/client/add}">Add new client</a></p>
+<p>2. <a th:href="@{/main}">Main Menu</a> </p>
 </body>
 </html>

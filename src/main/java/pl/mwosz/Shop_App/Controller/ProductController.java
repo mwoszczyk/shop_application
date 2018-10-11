@@ -60,7 +60,7 @@ public class ProductController {
 
         return "redirect:/product/all";
 
-        /*switch (productSaveDecision) {
+        /*switch (pushedButton) {
             case "Save":
                 log.info("Confirming save in ProductController....");
                 productService.saveProduct(product);

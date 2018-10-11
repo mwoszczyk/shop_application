@@ -48,7 +48,7 @@ public class ClientController {
 
         switch (decision) {
             case "SAVE":
-                log.info(String.format("[ClientController] - Saving client id: [%s]", client.getId()));
+                log.info(String.format("[ClientController] - Saving client id: [%s]", client.getId()));     // w dziwnej kolejnosci logi sie wyswietlaja, pozniej wyswietlany jest log "Save client...."
                 clientService.saveClient(client);
                 log.info(String.format("[ClientController] - Saved client id: [%s]" , client.getId()));
                 return "redirect:/client/all";
