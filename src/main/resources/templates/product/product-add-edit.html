@@ -12,14 +12,21 @@
     <p>Price: <input type="text" th:field="*{price}"/></p>
     <p>Description: <input type="text" th:field="*{description}"/></p>
     <p>Category:
-        <select>
-            <option utext="fromCategories"
-                    th:each="category : ${fromCategories}"
-                    th:value="category"
-                    th:utext="category"/>   <!--.name-->
+        <select>    <!--utext="fromCategories"-->
+            <option th:each="category : ${fromCategories}"
+                    th:value="${category.name}"
+                    th:utext="${category.name}"/>
         </select>
     </p>
     <p><input type="submit" name="productSaveDecision" value="Save"/> <input type="submit" name="productSaveDecision" value="Cancel"/> <input type="reset" value="Reset"/><!--jak to dziala konkretnie? th: wszystkie czym sa?-->
 </form>
 </body>
 </html>
+
+<!--
+<select>
+    <option utext="fromCategories"
+            th:each="category : ${fromCategories}"
+            th:value="category"
+            th:utext="category"/>
+</select>-->

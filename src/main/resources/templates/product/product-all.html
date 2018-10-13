@@ -12,7 +12,7 @@
     <tr>
         <td>Product</td>
         <td>Price</td>
-        <td>Category</td>
+        <!--<td>Category</td>-->
         <td>Description</td>
         <td>Edit</td>
         <td>Remove</td>
@@ -22,7 +22,7 @@
     <tr th:each="product : ${allProducts}">
         <td th:text="${product.name}">Name</td>                  <!--czemu th:text? to nie jest pole textowe do wpisywania?-->
         <td th:text="${product.price}">Price</td>
-        <td th:text="${product.category}">Category</td>                     <!--powinno byc .name zeby wyswietlalo nazwe category? bo nie chce tak dzialac-->
+        <!--<td th:text="${product.category}">Category</td>     czy to powinno tu byc?? jak zrobic wyswietlanie??-->
         <td th:text="${product.description}">Description</td>
         <td><a th:href="@{'/product/edit/' + ${product.id}}">Edit</a> </td>
         <td><a th:href="@{'/product/delete/confirmation/' + ${product.id}}">Delete</a> </td>

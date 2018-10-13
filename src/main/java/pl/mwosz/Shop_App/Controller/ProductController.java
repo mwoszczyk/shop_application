@@ -31,6 +31,7 @@ public class ProductController {
         log.info("allProducts() from ProductController....");
 
         model.addAttribute("allProducts", productService.allProducts());
+        model.addAttribute("categories", categoryService.allCategories());
 
         return "product/product-all";
     }
@@ -55,7 +56,6 @@ public class ProductController {
         if ("Save".equalsIgnoreCase(pushedButton)) {
             log.info("Confirming save in ProductController....");
             productService.saveProduct(product);
-
         }
 
         return "redirect:/product/all";
@@ -78,6 +78,7 @@ public class ProductController {
         productExistanceResult.ifPresent(product -> model.addAttribute("product", product));     // skad wie ze chodzi o product??
         model.addAttribute("title", "Edit");
         model.addAttribute("paragraph", "Edit");
+        model.addAttribute("fromCategories", categoryService.allCategories());
 
         return "product/product-add-edit";
     }

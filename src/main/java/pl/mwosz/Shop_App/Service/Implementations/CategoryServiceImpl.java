@@ -6,6 +6,7 @@ import pl.mwosz.Shop_App.Dao.CategoryDao;
 import pl.mwosz.Shop_App.Domain.Category;
 import pl.mwosz.Shop_App.Service.CategoryService;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +22,9 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<Category> allCategories() {
-        return (List<Category>) categoryDao.findAll();
+        List<Category> sortedList = (List<Category>) categoryDao.findAll();
+        Collections.sort(sortedList, (o1, o2) -> o1.getName().compareTo(o2.getName()));
+        return sortedList;
     }
 
     @Override

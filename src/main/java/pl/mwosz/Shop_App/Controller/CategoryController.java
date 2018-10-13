@@ -50,7 +50,7 @@ public class CategoryController {
     }
 
     @GetMapping("/category/edit/{id}")
-    public String categoryEdit(/*@ModelAttribute Category category,*/ @PathVariable(name = "id") long id, Model model) {
+    public String categoryEdit(@PathVariable(name = "id") long id, Model model) {
         log.info(String.format("Editing category id: [%s] from CategoryController....", id));
 
         Optional<Category> categoryExistanceResult = categoryService.findCategoryById(id);
