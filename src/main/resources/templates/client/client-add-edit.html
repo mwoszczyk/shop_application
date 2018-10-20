@@ -4,10 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${title} + ' client'">Client</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <p th:text="${paragraph} + ' client'">Client</p>
-<form th:action="@{/client/save}" th:object="${newClient}" method="post">
+<form th:action="@{/client/save}" th:object="${addEditClient}" method="post">
+    <input type="hidden" th:field="*{id}"/>
     <p>Name: <input type="text" th:field="*{name}"/> </p>
     <p>Surname: <input type="text" th:field="*{surname}"/> </p>
     <!--<p>Address ID: <input type="text" th:field="*{clintAddress}"/> </p>     chcialbym zeby byla taka mozliwosc edycji, w Product wszystko dziala

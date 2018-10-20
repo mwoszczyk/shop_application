@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<h2>Order information's</h2>
+<form th:action="@{/order/save}" th:object="${order}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <p>Name: <input type="text" name="clientName" th:field="*{client.name}"/> </p>
+    <p>Surname: <input type="text" name="clientSurname" th:field="*{client.surname}"/> </p>
+    <p>City: <input type="text" name="city" th:field="*{clintAddress.city}"/> </p>
+    <p>Postal-Code: <input type="text" name="postalCode" th:field="*{clintAddress.postalCode}"/> </p>
+    <p>Street: <input type="text" name="street" th:field="*{clintAddress.street}"/> </p>
+    <p>Street Number: <input type="text" name="streetNumber" th:field="*{clintAddress.streetNumber}"/> </p>
+    <p>Local Number: <input type="text" name="localNumber" th:field="*{clintAddress.localNumber}"/> </p>
+    <p>Payment Method:
+        <select>
+            <option th:each="paymentMethod:${payMeth}"
+                    th:value="${paymentMethod.name}"
+                    th:utext="${paymentMethod.name}"/>
+        </select>
+    </p>
+    <p>Comment: <input type="text" name="comment" th:field="*{clientComment}"/> </p>
+    <p>
+        <input type="submit" name="decision" value="Submit"/>
+        <input type="submit" name="decision" value="Cancel"/>
+        <input type="reset" value="Reset"/>
+    </p>
+</form>
+</body>
+</html>

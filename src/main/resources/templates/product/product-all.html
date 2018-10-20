@@ -4,6 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Products</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <h2>ALL PRODUCT'S</h2>
@@ -16,21 +23,23 @@
         <td>Description</td>
         <td>Edit</td>
         <td>Remove</td>
+        <!--<td>Dodaj</td>-->
     </tr>
     </thead>
     <tbody>
     <tr th:each="product : ${allProducts}">
-        <td th:text="${product.name}">Name</td>                  <!--czemu th:text? to nie jest pole textowe do wpisywania?-->
+        <td th:text="${product.name}">Name</td>
         <td th:text="${product.price}">Price</td>
         <!--<td th:text="${product.category}">Category</td>     czy to powinno tu byc?? jak zrobic wyswietlanie??-->
         <td th:text="${product.description}">Description</td>
-        <td><a th:href="@{'/product/edit/' + ${product.id}}">Edit</a> </td>
-        <td><a th:href="@{'/product/delete/confirmation/' + ${product.id}}">Delete</a> </td>
+        <td><a th:href="@{'/product/edit/' + ${product.id}}">Edit</a></td>
+        <td><a th:href="@{'/product/delete/confirmation/' + ${product.id}}">Delete</a></td>
+        <!--<td><a th:href="@{'/basket/add/' + ${product.id}}">Dodaj do koszyka</a></td> TO CHYBA NIE TUTAJ POWINNO BYC?-->
     </tr>
     </tbody>
 </table>
 </body>
 <br>
-<p><a th:href="@{/product/add}">Add new product</a> </p>
-<p><a th:href="@{/main}">Main Menu</a> </p>
+<p><a th:href="@{/product/add}">Add new product</a></p>
+<p><a th:href="@{/main}">Main Menu</a></p>
 </html>

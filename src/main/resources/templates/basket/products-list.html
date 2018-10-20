@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product List</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <td>Product</td>
+        <!--<td>Category</td>-->
+        <td>Price</td>
+        <td>Description</td>
+        <td>Add to Basket</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product:${products}">
+        <td th:text="${product.name}">Name</td>
+        <!--<td th:text="${product.category.name}">Category</td>   <&#45;&#45; nie czyta tego-->
+        <td th:text="${product.price}">Price</td>
+        <td th:text="${product.description}">Descrition</td>
+        <td><a th:href="@{'/basket/add/' + ${product.id}}"><b>Add to basket</b></a> </td>
+    </tr>
+    </tbody>
+</table>
+<p>1. <a th:href="@{/main}">Main Menu</a> </p>
+</body>
+</html>
