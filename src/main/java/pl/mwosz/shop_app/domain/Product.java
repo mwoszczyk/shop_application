@@ -15,7 +15,7 @@ public class Product {
     private BigDecimal price;
 
     private String description;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Category category;
     private LocalDateTime productCreationDateTime;
 

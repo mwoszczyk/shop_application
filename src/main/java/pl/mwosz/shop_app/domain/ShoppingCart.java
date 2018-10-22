@@ -9,7 +9,7 @@ public class ShoppingCart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST)
     private List<SingleOrderItem> orderList;
 
     public ShoppingCart() {

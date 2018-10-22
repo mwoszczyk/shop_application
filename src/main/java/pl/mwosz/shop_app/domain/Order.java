@@ -10,13 +10,13 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne    // ?? to nie jest Entity
+    @OneToOne(cascade = CascadeType.PERSIST)    // ?? to nie jest Entity
     private ShoppingCart cart;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Client client;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     private PaymentMethod paymentMethod;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Address orderAddress;
     private LocalDateTime orderCreationDate;
     private String clientComment;

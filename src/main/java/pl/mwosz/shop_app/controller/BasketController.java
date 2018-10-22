@@ -41,9 +41,8 @@ public class BasketController {
 
     @GetMapping("/basket/add/{id}")
     public RedirectView create(@PathVariable("id") long id,
-                               Model model,                      // model nie jest wykorzystywany wcale
                                @ModelAttribute("basket") ShoppingCart shoppingCart,
-                               RedirectAttributes attributes) {
+                               RedirectAttributes attributes) { // bezpieczny jak chodzi o sesje i redirect lokalizacji
 
         Optional<Product> productExistanceResult = productService.findProductById(id);
         productExistanceResult.ifPresent(product -> shoppingCart.addProductToCart(product));

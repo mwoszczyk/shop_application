@@ -16,13 +16,13 @@
 <h2>Order information's</h2>
 <form th:action="@{/order/save}" th:object="${order}" method="post">
     <input type="hidden" th:field="*{id}"/>
-    <p>Name: <input type="text" name="clientName" th:field="*{client.name}"/> </p>
-    <p>Surname: <input type="text" name="clientSurname" th:field="*{client.surname}"/> </p>
-    <p>City: <input type="text" name="city" th:field="*{clintAddress.city}"/> </p>
-    <p>Postal-Code: <input type="text" name="postalCode" th:field="*{clintAddress.postalCode}"/> </p>
-    <p>Street: <input type="text" name="street" th:field="*{clintAddress.street}"/> </p>
-    <p>Street Number: <input type="text" name="streetNumber" th:field="*{clintAddress.streetNumber}"/> </p>
-    <p>Local Number: <input type="text" name="localNumber" th:field="*{clintAddress.localNumber}"/> </p>
+    <p>Name: <input type="text" th:name="clientName" th:field="*{client.name}"/> </p>
+    <p>Surname: <input type="text" th:name="clientSurname" th:field="*{client.surname}"/> </p>
+    <p>City: <input type="text" th:name="city" th:field="*{client.clintAddress.city}"/> </p>
+    <p>Postal-Code: <input type="number" th:name="postalCode" th:field="*{client.clintAddress.postalCode}"/> </p>
+    <p>Street: <input type="text" th:name="street" th:field="*{client.clintAddress.street}"/> </p>
+    <p>Street Number: <input type="text" th:name="streetNumber" th:field="*{client.clintAddress.streetNumber}"/> </p>
+    <p>Local Number: <input type="text" th:name="localNumber" th:field="*{client.clintAddress.localNumber}"/> </p>
     <p>Payment Method:
         <select>
             <option th:each="paymentMethod:${payMeth}"
