@@ -5,10 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import pl.mwosz.shop_app.domain.Address;
 import pl.mwosz.shop_app.domain.Client;
 import pl.mwosz.shop_app.domain.Order;
@@ -18,6 +15,7 @@ import pl.mwosz.shop_app.service.*;
 import java.time.LocalDateTime;
 
 @Controller
+//@SessionAttributes("basket")
 public class OrderController {
 
     private static final Logger log = LoggerFactory.getLogger(OrderController.class);
